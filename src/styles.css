@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+/* reset css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* font-size will be 62.5% so that 1 rem is 10px  */
+
+html {
+    font-size: 62.5%;
+}
