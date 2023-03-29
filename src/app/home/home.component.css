@@ -1,0 +1,48 @@
+main {
+    max-width: 192rem;
+    padding: 0 10rem;
+}
+
+article {
+    display: flex;
+    padding: 1rem;
+    gap: 4rem;
+}
+
+article div img {
+    max-width: 40rem;
+    max-height: 40rem;
+}
+
+.about-article {
+    display: flex;
+    gap: 4rem;
+}
+
+.about-article div p {
+    margin-bottom: 1rem;
+}
+
+.bold {
+    font-weight: 900;
+}
+
+.submit-box {
+    padding: 1rem 0;
+}
+
+.submit-box p {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.3rem;
+}
+
+.submission-button {
+    display: block;
+    background-color: black;
+    border: none;
+    color: #fff;
+    padding: 1.2rem;
+    margin: 0 auto;
+    cursor: pointer;
+}

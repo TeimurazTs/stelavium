@@ -1,0 +1,32 @@
+<main>
+    <h1 class="margin-bottom-sm">Submit your contribution</h1>
+    <div class="container">
+        <div>
+            <div class="margin-bottom-sm inputs-div">
+                <app-input [formcontrol]="name" placeholder="First Name" type="text"></app-input>
+                <app-input [formcontrol]="lastname" placeholder="Last Name" type="text"></app-input>
+            </div>
+            <div class="margin-bottom-sm inputs-div">
+                <app-input [formcontrol]="email" placeholder="Email" type="email"></app-input>
+                <app-input [formcontrol]="phone" placeholder="Phone Number" type="tel"></app-input>
+            </div>
+            <textarea [formControl]="bio" placeholder="Please provide personal Bio" class="margin-bottom-sm" cols="44"
+                rows="10"></textarea>
+            <div class="select-files margin-bottom-sm">
+                <label class="file-label"><svg _ngcontent-cqb-c67="" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-8 w-8">
+                        <path _ngcontent-cqb-c67=""
+                            d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z">
+                        </path>
+                    </svg>
+                    <span>SELECT FILES</span>
+                    <input class="abacadabra" [formControl]="select" type="file" />
+                </label>
+            </div>
+            <button class="upload-button">Upload</button>
+        </div>
+        <div>
+            <img src="../../assets/boy-white.svg" alt="boy-image">
+        </div>
+    </div>
+</main>

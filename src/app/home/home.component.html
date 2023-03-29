@@ -1,0 +1,28 @@
+<main>
+    <article>
+        <div class="about-article">
+            <div>
+                <p>Author: {{ author }}</p>
+                <p>About: {{ about }}</p>
+            </div>
+
+            <img [src]="srcAuthor" alt="">
+        </div>
+        <div class="about-article">
+            <div>
+                <p>Novel: {{ novel }} </p>
+                <p>Description: {{ description }}</p>
+            </div>
+            <img [src]="srcBook" alt="Book cover">
+        </div>
+    </article>
+    <hr>
+    <div class="submit-box">
+        <p class="bold">WRITE FOR FIKRA</p>
+        <p>Do you have an original story to tell, visual art you can impress us <br> with or a great idea for Fikra?</p>
+        <button class="bold submission-button">
+            <a routerLink="/submit">Submit here</a>
+        </button>
+    </div>
+    <hr>
+</main>

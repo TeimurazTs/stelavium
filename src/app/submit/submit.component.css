@@ -1,0 +1,67 @@
+main {
+    padding: 1.5rem 10rem 1rem 10rem;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.inputs-div {
+    display: flex;
+    gap: 2rem;
+}
+
+svg {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.select-files {
+    display: flex;
+}
+
+.file-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 1.5rem;
+    border: 0.2rem solid grey;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+
+.file-label:hover {
+    background-color: grey;
+}
+
+.upload-button {
+    border: none;
+    background-color: #000;
+    padding: 1rem 2rem;
+    color: #fff;
+}
+
+textarea {
+    padding: 1.5rem;
+}
+
+.select-input::-webkit-file-upload-button {
+    background-color: red;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+.abacadabra {
+    display: none;
+}

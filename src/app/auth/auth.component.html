@@ -1,0 +1,8 @@
+<div class="container-auth" [ngSwitch]="authenticationState">
+    <ng-container *ngSwitchCase="'login'">
+        <app-login></app-login>
+    </ng-container>
+    <ng-container *ngSwitchCase="'signup'">
+        <app-register></app-register>
+    </ng-container>
+</div>
