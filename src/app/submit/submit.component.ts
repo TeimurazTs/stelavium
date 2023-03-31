@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { SubmitService } from './submit.service';
 
 @Component({
   selector: 'app-submit',
@@ -8,19 +9,38 @@ import { FormsModule, FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class SubmitComponent {
 
-  name = new FormControl('', [Validators.required, Validators.min(2)])
-  lastname = new FormControl('', [Validators.required, Validators.min(2)])
+  constructor(
+    private submit: SubmitService
+  ) { }
+
+  firstName = new FormControl('', [Validators.required, Validators.min(2)])
+  lastName = new FormControl('', [Validators.required, Validators.min(2)])
   email = new FormControl('', [Validators.required, Validators.email])
-  phone = new FormControl('', [Validators.required])
-  bio = new FormControl('', [Validators.required, Validators.min(10)])
+  phoneNumber = new FormControl('', [Validators.required])
+  comment = new FormControl('', [Validators.required, Validators.min(10)])
   select = new FormControl('', [Validators.required])
 
   submitForm = new FormGroup({
-    name: this.name,
-    lastname: this.lastname,
+    firstName: this.firstName,
+    lastName: this.lastName,
     email: this.email,
-    phone: this.phone,
-    bio: this.bio,
+    phoneNumber: this.phoneNumber,
+    comment: this.comment,
     select: this.select
   })
+
+
+  submitEssay() {
+    this.submit.onSubmit(this.submitForm)
+  }
+
+  handleUpload(event: any) {
+    const file1 = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file1);
+    reader.onload = () => {
+      // i know string slicing like that is not even kinda okay but I had bigger problems than thath
+      this.submit.base64 = reader.result?.slice(84)
+    };
+  }
 }

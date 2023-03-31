@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import { Store } from '@ngrx/store';
-import * as fromApp from '../../store/app.reducer'
-import * as AuthActions from '../store/auth.actions'
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -11,30 +9,33 @@ import * as AuthActions from '../store/auth.actions'
 })
 export class RegisterComponent {
 
-  constructor(private store: Store<fromApp.AppState>) { }
+  constructor(private auth: AuthService) { }
 
-  name = new FormControl('', [Validators.required, Validators.min(3)]);
-  lastname = new FormControl('', [Validators.required, Validators.min(3)])
+  firstname = new FormControl('', [Validators.required, Validators.min(3)]);
+  lastName = new FormControl('', [Validators.required, Validators.min(3)])
   email = new FormControl('', [Validators.required, Validators.email])
   password = new FormControl('', [Validators.required, Validators.pattern(/^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[a-zA-Z]).{8,}$/gm)])
   repeatPassword = new FormControl('', [Validators.required])
-  termCheck = new FormControl();
+  roldeId = new FormControl();
 
   registerForm = new FormGroup({
-    name: this.name,
-    lastname: this.lastname,
     email: this.email,
+    firstname: this.firstname,
+    lastName: this.lastName,
     password: this.password,
     repeatPassword: this.password,
-    termCheck: this.termCheck
+    roldeId: this.roldeId
   })
 
-  signup() {
-    this.store.dispatch(new AuthActions.SignupStart({
-      name: this.name.value,
-      lastname: this.lastname.value,
-      email: this.email.value,
-      password: this.password.value,
-    }))
-  }
+  //I did not know from where to retrieve data about roleId. googled a bit about it and it might have been related to checkbox but I did not spend time on it because I had bigger problems So I found a 'cheap' solution
+
+  dispatchSignup() {
+    this.auth.dispatchSignup(
+        this.email.value as string,
+        this.firstname.value as string,
+        this.lastName.value as string,
+        this.password.value as string,
+        this.repeatPassword.value as string,
+        'cb3c281d-fc5e-4d77-8129-8b90954f755d')
+    }
 }

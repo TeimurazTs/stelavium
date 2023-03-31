@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="signup()" class="container-register">
+<form [formGroup]="registerForm" (ngSubmit)="dispatchSignup()" class="container-register">
     <p class="sign-up-text margin-bottom-sm">Sign up</p>
     <button class="sign-up-google margin-bottom-sm">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48">
@@ -18,17 +18,17 @@
     </button>
     <p class="bold margin-bottom-sm">or sign up with email</p>
     <div class="name-lastname margin-bottom-sm">
-        <app-input placeholder="First Name" type="text" [formcontrol]="name"></app-input>
-        <app-input placeholder="Last Name" type="text" [formcontrol]="lastname"></app-input>
+        <app-input placeholder="First Name" type="text" [formcontrol]="firstname"></app-input>
+        <app-input placeholder="Last Name" type="text" [formcontrol]="lastName"></app-input>
     </div>
     <div class="div-inputs margin-bottom-sm">
         <app-input [formcontrol]="email" placeholder="Email" type="email"></app-input>
-        <app-input [formcontrol]="password" placeholder="Password" type="password?"></app-input>
+        <app-input [formcontrol]="password" placeholder="Password" type="password"></app-input>
         <app-input [formcontrol]="repeatPassword" placeholder="Repeat Password" type="password"></app-input>
     </div>
     <div class="forgot-password-checkbox margin-bottom-sm">
         <div class="checkbox-label">
-            <app-input [formcontrol]="termCheck" type="checkbox" id="checkbox"></app-input>
+            <app-input [formcontrol]="roldeId" type="checkbox" id="checkbox"></app-input>
             <label for="checkbox">I agree with <a class="terms">Terms</a> </label>
         </div>
     </div>

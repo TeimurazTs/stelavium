@@ -14,17 +14,22 @@ export class AuthEffects {
         return this.actions$.pipe(
             ofType(AuthActions.SIGNUP_START),
             switchMap((signupAction: AuthActions.SignupStart) => {
-                console.log(signupAction.payload.name)
+                console.log(signupAction.payload)
                 return this.http
                     .post('https://fikra.admi.ge/api/User/CreateUser',
                         {
-                            name: signupAction.payload.name,
-                            lastname: signupAction.payload.lastname,
+                            firstName: signupAction.payload.firstName,
+                            lastName: signupAction.payload.lastName,
                             email: signupAction.payload.email,
-                            password: signupAction.payload.password
+                            password: signupAction.payload.password,
+                            repeatPassword: signupAction.payload.repeatPassword,
+                            roleId: 'cb3c281d-fc5e-4d77-8129-8b90954f755d',
                         }).pipe(
                             map((resData: any) => {
-                                const user = new User(resData.email, resData.id, resData.token);
+                                if (!resData.success) {
+                                    return new AuthActions.AuthenticateFail(resData.errors[0].message)
+                                }
+                                const user = new User(resData.data.token);
                                 localStorage.setItem('userData', JSON.stringify(user));
                                 return new AuthActions.AuthenticateSuccess({ resData })
                             }),
@@ -44,11 +49,15 @@ export class AuthEffects {
                 return this.http
                     .post('https://fikra.admi.ge/api/User/Login',
                         {
-                            email: authData.payload.email,
-                            password: authData.payload.password
+                            username: authData.payload.username,
+                            password: authData.payload.password,
+                            remember: authData.payload.remember
                         }).pipe(
                             map((resData: any) => {
-                                const user = new User(resData.email, resData.id, resData.token);
+                                if (!resData.success) {
+                                    return new AuthActions.AuthenticateFail(resData.errors[0].message)
+                                }
+                                const user = new User(resData.data.token);
                                 localStorage.setItem('userData', JSON.stringify(user));
                                 return new AuthActions.AuthenticateSuccess({ resData });
                             }),

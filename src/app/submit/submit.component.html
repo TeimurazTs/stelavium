@@ -1,17 +1,17 @@
-<main>
+<form [formGroup]="submitForm" (ngSubmit)="submitEssay()">
     <h1 class="margin-bottom-sm">Submit your contribution</h1>
     <div class="container">
         <div>
             <div class="margin-bottom-sm inputs-div">
-                <app-input [formcontrol]="name" placeholder="First Name" type="text"></app-input>
-                <app-input [formcontrol]="lastname" placeholder="Last Name" type="text"></app-input>
+                <app-input [formcontrol]="firstName" placeholder="First Name" type="text"></app-input>
+                <app-input [formcontrol]="lastName" placeholder="Last Name" type="text"></app-input>
             </div>
             <div class="margin-bottom-sm inputs-div">
                 <app-input [formcontrol]="email" placeholder="Email" type="email"></app-input>
-                <app-input [formcontrol]="phone" placeholder="Phone Number" type="tel"></app-input>
+                <app-input [formcontrol]="phoneNumber" placeholder="Phone Number" type="tel"></app-input>
             </div>
-            <textarea [formControl]="bio" placeholder="Please provide personal Bio" class="margin-bottom-sm" cols="44"
-                rows="10"></textarea>
+            <textarea [formControl]="comment" placeholder="Please provide personal Bio" class="margin-bottom-sm"
+                cols="44" rows="10"></textarea>
             <div class="select-files margin-bottom-sm">
                 <label class="file-label"><svg _ngcontent-cqb-c67="" fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-8 w-8">
@@ -20,13 +20,13 @@
                         </path>
                     </svg>
                     <span>SELECT FILES</span>
-                    <input class="abacadabra" [formControl]="select" type="file" />
+                    <input (change)="handleUpload($event)" accept=".docx" class="abacadabra" [formControl]="select" type="file" />
                 </label>
             </div>
-            <button class="upload-button">Upload</button>
+            <button type="submit" class="upload-button">Upload</button>
         </div>
         <div>
             <img src="../../assets/boy-white.svg" alt="boy-image">
         </div>
     </div>
-</main>
+</form>

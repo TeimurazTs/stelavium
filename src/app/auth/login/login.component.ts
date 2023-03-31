@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import { Store } from '@ngrx/store'
-import * as fromApp from '../../store/app.reducer'
-import * as AuthActions from '../store/auth.actions'
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,22 +9,19 @@ import * as AuthActions from '../store/auth.actions'
 })
 export class LoginComponent {
 
-  constructor(private store: Store<fromApp.AppState>,) { }
+  constructor(private auth: AuthService) { }
 
-  email = new FormControl('', [Validators.required, Validators.email])
+  username = new FormControl('', [Validators.required])
   password = new FormControl('', [Validators.required, Validators.pattern(/^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[a-zA-Z]).{8,}$/gm)]);
-  checkForm = new FormControl();
+  remember = new FormControl();
 
   loginFormGroup = new FormGroup({
-    email: this.email,
+    username: this.username,
     password: this.password,
-    checkForm: this.checkForm
+    remember: this.remember
   })
 
   login() {
-    this.store.dispatch(new AuthActions.LoginStart({
-      email: this.email.value as string,
-      password: this.password.value as string
-    }))
+    this.auth.dispatchLogin(this.username.value as string, this.password.value as string, this.remember.value);
   }
 }
