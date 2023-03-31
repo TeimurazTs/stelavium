@@ -1,12 +1,15 @@
 <form [formGroup]="loginFormGroup" (ngSubmit)="login()" class="container-login">
     <p class="log-in-text margin-bottom-sm">Log In</p>
-    <div id="g_id_onload" data-client_id="536962025013-pdmcepgcj8ncq9uk9rmjlns20q8rr10a.apps.googleusercontent.com"
+    <!-- <div id="g_id_onload" data-client_id="536962025013-pdmcepgcj8ncq9uk9rmjlns20q8rr10a.apps.googleusercontent.com"
         data-login_uri="https://fikra.admi.ge/api/User/ExternalLogin" data-auto_prompt="false">
     </div>
     <div class="g_id_signin margin-bottom-sm" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with"
         data-shape="rectangular" data-logo_alignment="left">
+    </div> -->
+    <div class="margin-bottom-sm">
+        <div id="buttonDiv"></div>
     </div>
-    <p class="bold margin-bottom-sm">or log in with email</p>
+    <!-- <p class="bold margin-bottom-sm">or log in with email</p> -->
     <div class="div-inputs margin-bottom-sm">
         <app-input [formcontrol]="username" placeholder="Username" type="text"></app-input>
         <app-input [formcontrol]="password" placeholder="Password" type="password"></app-input>
