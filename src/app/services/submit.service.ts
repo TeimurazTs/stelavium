@@ -31,6 +31,7 @@ export class SubmitService {
   }
 
   submitSuccess(submitForm: any) {
+    console.log(this.formdata.get('file'))
     this.http
       .post(this.apiForFileUpload, {
         comment: submitForm.get('comment').value,
@@ -39,9 +40,10 @@ export class SubmitService {
 
         firstName: submitForm.get('firstName').value,
         lastName: submitForm.get('lastName').value,
+        file: this.formdata,
       })
       .subscribe((response) => {
-        console.log(response);
+        console.log('File has been uploaded');
       });
   }
 }

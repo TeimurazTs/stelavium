@@ -49,6 +49,7 @@ export class AuthService {
     );
   }
 
+
   loginWithGoogle(credentials: string): Observable<any> {
     return this.http.post(`${this.url}User/ExternalLogin`, {
       provider: 'GOOGLE',
