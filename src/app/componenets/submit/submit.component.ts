@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { SubmitService } from './submit.service';
+import { SubmitService } from '../../services/submit.service';
 
 @Component({
   selector: 'app-submit',
@@ -35,12 +35,17 @@ export class SubmitComponent {
   }
 
   handleUpload(event: any) {
-    const file1 = event.target.files[0];
+    const file = event.target.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(file1);
+    reader.readAsDataURL(file);
     reader.onload = () => {
       // i know string slicing like that is not even kinda okay but I had bigger problems than thath
       this.submit.base64 = reader.result?.slice(84)
     };
+      const formData = new FormData();
+
+      formData.append("thumbnail", file);
+
+      this.submit.formdata = formData;
   }
 }

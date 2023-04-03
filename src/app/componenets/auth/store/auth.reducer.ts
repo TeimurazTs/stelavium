@@ -1,5 +1,5 @@
 import * as AuthActions from "./auth.actions";
-import { User } from '../user.model'
+import { User } from '../../../shared/models/user.model'
 import { Action } from "@ngrx/store";
 
 export interface State {

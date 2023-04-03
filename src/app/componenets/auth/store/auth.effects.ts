@@ -2,10 +2,11 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { switchMap, catchError, map, tap } from 'rxjs/operators'
 import { of } from 'rxjs'
 import { HttpClient } from '@angular/common/http'
-import { User } from "../user.model";
+import { User } from "../../../shared/models/user.model";
 
 import * as AuthActions from './auth.actions'
 import { Injectable } from "@angular/core";
+import { environment } from "src/environment.ts/environment";
 
 
 @Injectable()
@@ -16,7 +17,7 @@ export class AuthEffects {
             switchMap((signupAction: AuthActions.SignupStart) => {
                 console.log(signupAction.payload)
                 return this.http
-                    .post('https://fikra.admi.ge/api/User/CreateUser',
+                    .post(`${environment.url}User/CreateUser`,
                         {
                             firstName: signupAction.payload.firstName,
                             lastName: signupAction.payload.lastName,
@@ -47,7 +48,7 @@ export class AuthEffects {
             ofType(AuthActions.LOGIN_START),
             switchMap((authData: AuthActions.LoginStart) => {
                 return this.http
-                    .post('https://fikra.admi.ge/api/User/Login',
+                    .post(`${environment.url}/User/Login`,
                         {
                             username: authData.payload.username,
                             password: authData.payload.password,
