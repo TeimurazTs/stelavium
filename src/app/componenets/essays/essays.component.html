@@ -1,1 +1,10 @@
-<p>essays works!</p>
+<h2 class="ideas">Ideas that inspire</h2>
+<main>
+  <div *ngFor="let essay of essays" class="margin-bottom-sm essays">
+    <div class="first-last">
+      <p>{{ essay.firstName }}</p>
+      <p>{{ essay.lastName }}</p>
+    </div>
+    <p>{{ essay }}</p>
+  </div>
+</main>

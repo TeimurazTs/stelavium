@@ -43,10 +43,10 @@ export class SubmitComponent {
       // i know string slicing like that is not even kinda okay but I had bigger problems than thath
       this.submit.base64 = reader.result?.slice(84);
 
-      const formData = new FormData();
-      formData.append('file', file);
+      // const formData = new FormData();
+      // formData.append('file', file);
 
-      this.submit.formdata = formData;
+      // this.submit.formdata = formData;
     };
   }
 }
